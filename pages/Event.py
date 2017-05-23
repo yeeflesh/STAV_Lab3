@@ -53,3 +53,21 @@ class Event():
 
         return result
 
+    def deleteEvent(self):
+        #get event div id
+        eventId = self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]/div').get_attribute('id')
+
+        # click delete event
+        self.driver.find_element_by_xpath('//*[@class="fa fa-trash"]').click()
+        time.sleep(0.5)
+
+        ###
+        # use try catch to prevent there is no post on the page
+        # if the two eventId is not equal
+        # then return true
+        ###
+        try:
+            return eventId != \
+                self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]/div').get_attribute('id')
+        except:
+            return True

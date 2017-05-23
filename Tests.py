@@ -56,7 +56,7 @@ class EventTest(unittest.TestCase):
         )
         response = event.createEvent(createEventData)
 
-        self.assertEqual(response,
+        self.assertDictEqual(response,
             dict(eventName = 'EventTest!!!',
                  eventWhen = '11 May 01:16'))
 
@@ -80,9 +80,25 @@ class EventTest(unittest.TestCase):
         )
         response = event.editEvent(editEventData)
 
-        self.assertEqual(response,
+        self.assertDictEqual(response,
             dict(eventName='EditTest???',
                  eventWhen='13 Jun 02:37'))
+
+    def test_delete_event(self):
+        Account(self.driver, self.user).login()
+
+        #create event
+        event = Event(self.driver)
+        createEventData1 = dict(
+            eventName='DeleteTest',
+            eventWhen='2017/08/07 08:07'
+        )
+        event.createEvent(createEventData1)
+
+        #delete event
+        response = event.deleteEvent()
+
+        self.assertIs(response, True)
 
 if __name__ == "__main__":
     unittest.main()
