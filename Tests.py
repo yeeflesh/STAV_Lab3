@@ -60,7 +60,6 @@ class EventTest(unittest.TestCase):
             dict(eventName = 'EventTest!!!',
                  eventWhen = '11 May 01:16'))
 
-
     def test_edit_event(self):
         Account(self.driver, self.user).login()
 
@@ -85,6 +84,7 @@ class EventTest(unittest.TestCase):
                  eventWhen='13 Jun 02:37'))
 
     def test_delete_event(self):
+        #login
         Account(self.driver, self.user).login()
 
         #create event
@@ -99,6 +99,31 @@ class EventTest(unittest.TestCase):
         response = event.deleteEvent()
 
         self.assertIs(response, True)
+
+class CommentTest(unittest.TestCase):
+    def setUp(self):
+        chromedriver = "./driver/chromedriver"
+        self.driver = webdriver.Chrome(chromedriver)
+        self.driver.get("http://140.124.183.106:3000/")
+        # self.driver.set_window_position(0, 0)
+        # self.driver.set_window_size(1280, 800)
+        self.driver.maximize_window()
+
+        self.user = dict(
+            email='coopldh@gmail.com',
+            password='88888888'
+        )
+
+    def tearDown(self):
+        self.driver.close()
+
+    def test_write_comment(self):
+        # login
+        Account(self.driver, self.user).login()
+
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -22,8 +22,8 @@ class Event():
 
         #get event data
         result = dict(
-            eventName=self.driver.find_element_by_xpath('//*[@class="content"]/h3').text,
-            eventWhen=self.driver.find_element_by_xpath('//*[@class="content"]/span').text
+            eventName=self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]/div//h3').text,
+            eventWhen=self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]/div//div[@class="content"]/span').text
         )
 
         return result
