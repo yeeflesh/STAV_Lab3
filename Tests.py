@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from pages.Account import Account
 from pages.Event import Event
+from pages.Comment import Comment
 
 class AccountTest(unittest.TestCase):
 
@@ -23,6 +24,7 @@ class AccountTest(unittest.TestCase):
         self.driver.close()
 
     def test_login(self):
+        # login
         me = Account(self.driver, self.user)
         me.login()
         username = me.getUserName()
@@ -47,6 +49,7 @@ class EventTest(unittest.TestCase):
         self.driver.close()
 
     def test_create_event(self):
+        # login
         Account(self.driver, self.user).login()
 
         event = Event(self.driver)
@@ -61,6 +64,7 @@ class EventTest(unittest.TestCase):
                  eventWhen = '11 May 01:16'))
 
     def test_edit_event(self):
+        # login
         Account(self.driver, self.user).login()
 
         #create event first
@@ -89,11 +93,11 @@ class EventTest(unittest.TestCase):
 
         #create event
         event = Event(self.driver)
-        createEventData1 = dict(
+        createEventData = dict(
             eventName='DeleteTest',
             eventWhen='2017/08/07 08:07'
         )
-        event.createEvent(createEventData1)
+        event.createEvent(createEventData)
 
         #delete event
         response = event.deleteEvent()
@@ -121,9 +125,19 @@ class CommentTest(unittest.TestCase):
         # login
         Account(self.driver, self.user).login()
 
+        #create event first
+        createEventData = dict(
+            eventName='Create A Event For WriteCommentTest',
+            eventWhen='2017/08/07 08:07'
+        )
+        Event(self.driver).createEvent(createEventData)
 
+        #write a comment
+        comment = Comment(self.driver)
+        text = 'Write Comment Test!!!'
+        response = comment.writeComment(text)
 
-
+        self.assertEqual(response, 'Write Comment Test!!!')
 
 if __name__ == "__main__":
     unittest.main()

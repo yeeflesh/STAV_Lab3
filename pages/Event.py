@@ -1,12 +1,11 @@
 import time
-import json
 
 class Event():
     def __init__(self, driver):
         self.driver = driver
 
     def createEvent(self, input):
-        #clidk create event
+        #click create event
         self.driver.find_element_by_xpath('//*[@id="links"]/h5[2]/a').click()
         time.sleep(0.5)
 
@@ -29,7 +28,7 @@ class Event():
         return result
 
     def editEvent(self, input):
-        # clidk eidt event
+        # click eidt event
         self.driver.find_element_by_xpath('//*[@class="btn btn-primary btn-sm"]').click()
         time.sleep(0.5)
 
