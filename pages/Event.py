@@ -7,7 +7,7 @@ class Event():
     def createEvent(self, input):
         #click create event
         self.driver.find_element_by_xpath('//*[@id="links"]/h5[2]/a').click()
-        time.sleep(0.5)
+        time.sleep(1)
 
         ###
         # input event data
@@ -17,7 +17,7 @@ class Event():
         self.driver.find_element_by_xpath('//*[@id="event_name"]').send_keys(input['eventName'])
         self.driver.find_element_by_xpath('//*[@id="event_event_datetime"]').send_keys(input['eventWhen'])
         self.driver.find_element_by_xpath('//*[@id="new_event"]/div[3]/input').click()
-        time.sleep(0.5)
+        time.sleep(1)
 
         #get event data
         result = dict(
@@ -30,7 +30,7 @@ class Event():
     def editEvent(self, input):
         # click eidt event
         self.driver.find_element_by_xpath('//*[@class="btn btn-primary btn-sm"]').click()
-        time.sleep(0.5)
+        time.sleep(1)
 
         ###
         # input event data
@@ -42,7 +42,7 @@ class Event():
         self.driver.find_element_by_xpath('//*[@id="event_event_datetime"]').clear()
         self.driver.find_element_by_xpath('//*[@id="event_event_datetime"]').send_keys(input['eventWhen'])
         self.driver.find_element_by_xpath('//*[@value="update"]').submit()
-        time.sleep(0.5)
+        time.sleep(1)
 
         # get event data
         result = dict(
@@ -58,7 +58,7 @@ class Event():
 
         # click delete event
         self.driver.find_element_by_xpath('//*[@class="fa fa-trash"]').click()
-        time.sleep(0.5)
+        time.sleep(1)
 
         ###
         # use try catch to prevent there is no post on the page

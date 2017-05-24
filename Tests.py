@@ -74,7 +74,7 @@ class EventTest(unittest.TestCase):
             eventWhen = '2017/05/11 01:16'
         )
         event.createEvent(createEventData)
-        #time.sleep(0.5)
+        time.sleep(1)
 
         #next, edit event
         editEventData = dict(
@@ -98,6 +98,7 @@ class EventTest(unittest.TestCase):
             eventWhen='2017/08/07 08:07'
         )
         event.createEvent(createEventData)
+        time.sleep(1)
 
         #delete event
         response = event.deleteEvent()
@@ -138,6 +139,28 @@ class CommentTest(unittest.TestCase):
         response = comment.writeComment(text)
 
         self.assertEqual(response, 'Write Comment Test!!!')
+
+    def test_delete_comment(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # create event first
+        createEventData = dict(
+            eventName='Create A Event For DeleteCommentTest',
+            eventWhen='2017/08/07 08:07'
+        )
+        Event(self.driver).createEvent(createEventData)
+
+        # write a comment first
+        comment = Comment(self.driver)
+        text = 'Delete Comment Test!!!'
+        comment.writeComment(text)
+        time.sleep(1)
+
+        #delete comment
+        response = comment.deleteComment()
+
+        self.assertIs(response, True)
 
 if __name__ == "__main__":
     unittest.main()
