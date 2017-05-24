@@ -17,12 +17,13 @@
 	2. Edit all info of profile  
 # 測試方法：Input space partitioning (ISP) - Base Choice  
 
-# 測試終止條件：## 每個功能至少達成一個Happy Path (Pass)  
+# 測試終止條件：  
+## 每個功能至少達成一個Happy Path (Pass)  
 
 # 測試環境：  
-	* Python 3.6.1 32-bit
-	* Selenium
-	* PyCharm (IDE)
-	* Win10 64-bits (OS)
-	* Chrome版本 58.0.3029.110 (64-bit)
+* Python 3.6.1 32-bit
+* Selenium
+* PyCharm (IDE)
+* Win10 64-bits (OS)
+* Chrome版本 58.0.3029.110 (64-bit)
 	
