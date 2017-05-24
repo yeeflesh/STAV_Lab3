@@ -70,3 +70,45 @@ class Event():
                 self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]/div').get_attribute('id')
         except:
             return True
+
+    def likeEvent(self):
+        # click comment event to enter comment mode
+        self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]//*[contains(@class,"comment")]/a').click()
+        time.sleep(1)
+
+        # click like
+        self.driver.find_element_by_xpath('//div[contains(@class,"like")]//button').click()
+        time.sleep(1)
+
+        ###
+        # get button text
+        # if success
+        # then
+        # button text = "unlike"
+        ###
+        likeButtonText = self.driver.find_element_by_xpath('//div[contains(@class,"like")]//button').text
+
+        return likeButtonText
+
+    def unlikeEvent(self):
+        # click comment event to enter comment mode
+        self.driver.find_element_by_xpath('//*[@id="activities"]/div[1]//*[contains(@class,"comment")]/a').click()
+        time.sleep(1)
+
+        # click like
+        self.driver.find_element_by_xpath('//div[contains(@class,"like")]//button').click()
+        time.sleep(1)
+
+        # click unlike
+        self.driver.find_element_by_xpath('//div[contains(@class,"like")]//button').click()
+        time.sleep(1)
+
+        ###
+        # get button text
+        # if success
+        # then
+        # button text = "like"
+        ###
+        unlikeButtonText = self.driver.find_element_by_xpath('//div[contains(@class,"like")]//button').text
+
+        return unlikeButtonText

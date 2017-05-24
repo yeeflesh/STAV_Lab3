@@ -105,6 +105,42 @@ class EventTest(unittest.TestCase):
 
         self.assertIs(response, True)
 
+    def test_like_event(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # create event
+        event = Event(self.driver)
+        createEventData = dict(
+            eventName='LikeTest',
+            eventWhen='2017/08/07 08:07'
+        )
+        event.createEvent(createEventData)
+        time.sleep(1)
+
+        # like event
+        response = event.likeEvent()
+
+        self.assertEquals(response, 'unlike')
+
+    def test_unlike_event(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # create event
+        event = Event(self.driver)
+        createEventData = dict(
+            eventName='UnlikeTest',
+            eventWhen='2017/08/07 08:07'
+        )
+        event.createEvent(createEventData)
+        time.sleep(1)
+
+        # unlike event
+        response = event.unlikeEvent()
+
+        self.assertEquals(response, 'like')
+
 class CommentTest(unittest.TestCase):
     def setUp(self):
         chromedriver = "./driver/chromedriver"
