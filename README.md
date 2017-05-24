@@ -1,20 +1,24 @@
 # 測試範圍
 社群網站 Socify (http://140.124.183.106:3000/) 上可操作的功能如下列所示：
 
-* **Account Log In**
+* **Account**
+    1. Log in
  
-* **Create a new event**
-	1. Edit event
-	2. Delete event
-	3. Like event
-	4. Unlike event
+* **Event**
+    1. Create an event
+	1. Edit an event
+	2. Delete an event
+	3. Like an event
+	4. Unlike an event
 	
-* **Post comment**
-	1. Write/delete a comment
+* **Comment**
+	1. Write a comment
+	2. Delete a comment
 	
-* **Create a new status**
-	1. Add images
-	2. Delete/Edit a status
+* **Status**
+    1. Create a status with add images
+	2. Edit a status
+	3. Delete a status
 	
 * **Find friends**
 
