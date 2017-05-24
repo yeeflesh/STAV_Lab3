@@ -6,6 +6,7 @@ from pages.Event import Event
 from pages.Comment import Comment
 from pages.Status import Status
 from pages.Friends import Friends
+from pages.Profile import Profile
 
 class AccountTest(unittest.TestCase):
 
@@ -302,5 +303,55 @@ class FriendsTest(unittest.TestCase):
 
         self.assertEquals(response, 'unfollow')
 
+class ProfileTest(unittest.TestCase):
+    def setUp(self):
+        chromedriver = "./driver/chromedriver"
+        self.driver = webdriver.Chrome(chromedriver)
+        self.driver.get("http://140.124.183.106:3000/")
+        #self.driver.set_window_position(0, 0)
+        #self.driver.set_window_size(1280, 800)
+        self.driver.maximize_window()
+
+        self.user = dict(
+            email='coopldh@gmail.com',
+            password='88888888'
+        )
+
+    def tearDown(self):
+        self.driver.close()
+
+    def test_edit_profile(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        #edit profile
+        profile = Profile(self.driver)
+        profileData = dict(
+            avatar = 'marceline.png',
+            cover = 'babyFP.png',
+            name = '105598001',
+            about = 'Edit Profile About',
+            location = 'Edit Profile Location',
+            phone = '0912345678',
+            dob = '2000/08/07',
+            sex = 'Male'
+        )
+        response = profile.editProfile(profileData)
+
+        self.assertDictEqual(response,
+            dict(
+                avatarIsTheSame = True,
+                coverIsTheSame = True,
+                name = '105598001',
+                about = 'Edit Profile About',
+                location = 'Edit Profile Location',
+                phone = '0912345678',
+                dob = '2000/08/07',
+                sex = 'Male'
+            )
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
+
