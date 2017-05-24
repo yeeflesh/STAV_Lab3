@@ -6,10 +6,10 @@
  
 * **Event**
     1. Create an event
-	1. Edit an event
-	2. Delete an event
-	3. Like an event
-	4. Unlike an event
+	2. Edit an event
+	3. Delete an event
+	4. Like an event
+	5. Unlike an event
 	
 * **Comment**
 	1. Write a comment
