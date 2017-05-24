@@ -30,4 +30,5 @@ Input space partitioning (ISP) - Base Choice
 * PyCharm (IDE)
 * Win10 64-bits (OS)
 * Chrome版本 58.0.3029.110 (64-bit)
+* ChromeDriver 2.29
 	
