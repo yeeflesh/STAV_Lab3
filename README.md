@@ -17,8 +17,6 @@
 * **Find friends**
 
 * **Edit profile**
-	1. Upload avatar and cover
-	2. Edit all info of profile
 
 # 測試方法
 Input space partitioning (ISP) - Base Choice
