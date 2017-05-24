@@ -4,6 +4,7 @@ from selenium import webdriver
 from pages.Account import Account
 from pages.Event import Event
 from pages.Comment import Comment
+from pages.Status import Status
 
 class AccountTest(unittest.TestCase):
 
@@ -52,6 +53,7 @@ class EventTest(unittest.TestCase):
         # login
         Account(self.driver, self.user).login()
 
+        #create event
         event = Event(self.driver)
         createEventData = dict(
             eventName = 'EventTest!!!',
@@ -197,6 +199,38 @@ class CommentTest(unittest.TestCase):
         response = comment.deleteComment()
 
         self.assertIs(response, True)
+
+class StatusTest(unittest.TestCase):
+    def setUp(self):
+        chromedriver = "./driver/chromedriver"
+        self.driver = webdriver.Chrome(chromedriver)
+        self.driver.get("http://140.124.183.106:3000/")
+        #self.driver.set_window_position(0, 0)
+        #self.driver.set_window_size(1280, 800)
+        self.driver.maximize_window()
+
+        self.user = dict(
+            email='coopldh@gmail.com',
+            password='88888888'
+        )
+
+    def tearDown(self):
+        self.driver.close()
+
+    def test_create_status_with_images(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        #create status
+        status = Status(self.driver)
+
+        statusData = dict(
+            statusInput = 'Create Status Test!!!',
+            statusImage = 'moonmoon.gif')
+        response = status.createStatusWithImages(statusData)
+
+        self.assertEquals(response["Context"], 'Create Status Test!!!')
+        self.assertIn( 'moonmoon.gif', response["ImagePath"])
 
 if __name__ == "__main__":
     unittest.main()
