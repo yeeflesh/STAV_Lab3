@@ -1,6 +1,8 @@
 # 測試範圍
 社群網站 Socify (http://140.124.183.106:3000/) 上可操作的功能如下列所示：
 
+* **Account Sign In**
+ 
 * **Create a new event**
 	1. Edit event
 	2. Delete event
