@@ -14,8 +14,6 @@
 	1. Add images
 	2. Delete/Edit a status
 	
-* **Follow friends**
-
 * **Find friends**
 
 * **Edit profile**
