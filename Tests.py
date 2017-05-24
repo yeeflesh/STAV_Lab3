@@ -5,6 +5,7 @@ from pages.Account import Account
 from pages.Event import Event
 from pages.Comment import Comment
 from pages.Status import Status
+from pages.Friends import Friends
 
 class AccountTest(unittest.TestCase):
 
@@ -272,6 +273,34 @@ class StatusTest(unittest.TestCase):
         response = status.deleteStatus()
 
         self.assertIs(response, True)
+
+class FriendsTest(unittest.TestCase):
+    def setUp(self):
+        chromedriver = "./driver/chromedriver"
+        self.driver = webdriver.Chrome(chromedriver)
+        self.driver.get("http://140.124.183.106:3000/")
+        #self.driver.set_window_position(0, 0)
+        #self.driver.set_window_size(1280, 800)
+        self.driver.maximize_window()
+
+        self.user = dict(
+            email='coopldh@gmail.com',
+            password='88888888'
+        )
+
+    def tearDown(self):
+        self.driver.close()
+
+    def test_find_friend(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # find friend
+        friend = Friends(self.driver)
+        name = 'Red'
+        response = friend.findFriends(name)
+
+        self.assertEquals(response, 'unfollow')
 
 if __name__ == "__main__":
     unittest.main()
