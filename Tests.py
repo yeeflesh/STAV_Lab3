@@ -9,7 +9,6 @@ from pages.Friends import Friends
 from pages.Profile import Profile
 
 class AccountTest(unittest.TestCase):
-
     def setUp(self):
         chromedriver = "./driver/chromedriver"
         self.driver = webdriver.Chrome(chromedriver)
