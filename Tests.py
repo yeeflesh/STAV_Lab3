@@ -221,16 +221,57 @@ class StatusTest(unittest.TestCase):
         # login
         Account(self.driver, self.user).login()
 
-        #create status
+        # create status
         status = Status(self.driver)
-
-        statusData = dict(
+        createStatusData = dict(
             statusInput = 'Create Status Test!!!',
-            statusImage = 'moonmoon.gif')
-        response = status.createStatusWithImages(statusData)
+            statusImage = 'moonmoon.gif'
+        )
+        response = status.createStatusWithImages(createStatusData)
 
         self.assertEquals(response["Context"], 'Create Status Test!!!')
         self.assertIn( 'moonmoon.gif', response["ImagePath"])
+
+    def test_edit_status(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # create status
+        status = Status(self.driver)
+        createStatusData = dict(
+            statusInput='Create Status Test!!!',
+            statusImage='moonmoon.gif'
+        )
+        status.createStatusWithImages(createStatusData)
+        time.sleep(1)
+
+        #edit status
+        editStatusData = dict(
+            statusInput='Edit Status Test!!!',
+            statusImage='nickyoung.gif'
+        )
+        response = status.editStatus(editStatusData)
+
+        self.assertEquals(response["Context"], 'Edit Status Test!!!')
+        self.assertIn('nickyoung.gif', response["ImagePath"])
+
+    def test_delete_status(self):
+        # login
+        Account(self.driver, self.user).login()
+
+        # create status
+        status = Status(self.driver)
+        createStatusData = dict(
+            statusInput='Delete Status Test!!!',
+            statusImage='nickyoung.gif'
+        )
+        status.createStatusWithImages(createStatusData)
+        time.sleep(1)
+
+        # delete event
+        response = status.deleteStatus()
+
+        self.assertIs(response, True)
 
 if __name__ == "__main__":
     unittest.main()
