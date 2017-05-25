@@ -27,8 +27,8 @@ class AccountTest(unittest.TestCase):
 
     def test_login(self):
         # login
-        me = Account(self.driver, self.user)
-        me.login()
+        me = Account(self.driver)
+        me.login(self.user)
         username = me.getUserName()
 
         self.assertEqual(username, '105598001')
@@ -52,7 +52,7 @@ class EventTest(unittest.TestCase):
 
     def test_create_event(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         #create event
         event = Event(self.driver)
@@ -68,7 +68,7 @@ class EventTest(unittest.TestCase):
 
     def test_edit_event(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         #create event first
         event = Event(self.driver)
@@ -92,7 +92,7 @@ class EventTest(unittest.TestCase):
 
     def test_delete_event(self):
         #login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         #create event
         event = Event(self.driver)
@@ -110,7 +110,7 @@ class EventTest(unittest.TestCase):
 
     def test_like_event(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create event
         event = Event(self.driver)
@@ -128,7 +128,7 @@ class EventTest(unittest.TestCase):
 
     def test_unlike_event(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create event
         event = Event(self.driver)
@@ -163,7 +163,7 @@ class CommentTest(unittest.TestCase):
 
     def test_write_comment(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         #create event first
         createEventData = dict(
@@ -181,7 +181,7 @@ class CommentTest(unittest.TestCase):
 
     def test_delete_comment(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create event first
         createEventData = dict(
@@ -220,7 +220,7 @@ class StatusTest(unittest.TestCase):
 
     def test_create_status_with_images(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create status
         status = Status(self.driver)
@@ -235,7 +235,7 @@ class StatusTest(unittest.TestCase):
 
     def test_edit_status(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create status
         status = Status(self.driver)
@@ -258,7 +258,7 @@ class StatusTest(unittest.TestCase):
 
     def test_delete_status(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # create status
         status = Status(self.driver)
@@ -293,7 +293,7 @@ class FriendsTest(unittest.TestCase):
 
     def test_find_friend(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         # find friend
         friend = Friends(self.driver)
@@ -321,7 +321,7 @@ class ProfileTest(unittest.TestCase):
 
     def test_edit_profile(self):
         # login
-        Account(self.driver, self.user).login()
+        Account(self.driver).login(self.user)
 
         #edit profile
         profile = Profile(self.driver)
