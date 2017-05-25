@@ -17,21 +17,32 @@ class AccountTest(unittest.TestCase):
         #self.driver.set_window_size(1280, 800)
         self.driver.maximize_window()
 
-        self.user = dict(
-            email = 'coopldh@gmail.com',
-            password = '88888888'
-        )
-
     def tearDown(self):
         self.driver.close()
 
     def test_login(self):
         # login
         me = Account(self.driver)
-        me.login(self.user)
+        user = dict(
+            email='coopldh@gmail.com',
+            password='88888888'
+        )
+        me.login(user)
         username = me.getUserName()
 
         self.assertEqual(username, '105598001')
+
+    def test_login_fail(self):
+        # login
+        me = Account(self.driver)
+        user = dict(
+            email='gg@gmail.com',
+            password='gg'
+        )
+        me.login(user)
+        username = me.getUserName()
+
+        self.assertEqual(username, 'Invalid Email or password.')
 
 class EventTest(unittest.TestCase):
     def setUp(self):
